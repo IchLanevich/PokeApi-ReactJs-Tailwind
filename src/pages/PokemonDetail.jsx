@@ -11,8 +11,6 @@ import PokemonImage from "../components/pokemon_detail_components/PokemonImage";
 import PokemonStats from "../components/pokemon_detail_components/PokemonStats";
 import PokemonBiography from "../components/pokemon_detail_components/PokemonBiography";
 import PokemonEvolutions from "../components/pokemon_detail_components/PokemonEvolutions";
-import Skeleton from "react-loading-skeleton";
-import "react-loading-skeleton/dist/skeleton.css";
 
 const PokemonDetail = ({ iconType, elementBgColor }) => {
   const { id } = useParams();
@@ -121,10 +119,11 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
   return (
     <>
       <Navbar backIcon={<AiOutlineArrowLeft />} />
-      <div className="pokemon-title">
-        <h1 className="text-white text-3xl font-bold tracking-wider">
-          {isLoading ? <Skeleton /> : capitalize(pokeData.name)}
+      <div className="container pokemon-title w-full text-center">
+        <h1 className="text-3xl font-bold tracking-wider">
+          {isLoading ? "" : capitalize(pokeData.name)}
         </h1>
+        {/* <h1>{pokeData.name || <Skeleton width={100} height={200} />}</h1> */}
       </div>
       <main className="flex flex-col gap-8">
         <section
@@ -132,7 +131,7 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
         >
           <div className="flex flex-col p-3 gap-12 w-full justify-center md:flex-row">
             {isLoading ? (
-              ""
+              "Loading..."
             ) : (
               <PokemonImage
                 pokeData={pokeData}
@@ -144,8 +143,8 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
             {isLoading ? "" : <PokemonStats pokeData={pokeData} />}
           </div>
         </section>
-        <PokemonBiography pokeData={pokeData} />
-        <PokemonEvolutions pokeData={pokeData} />
+        {isLoading ? "" : <PokemonBiography pokeData={pokeData} />}
+        {isLoading ? "" : <PokemonEvolutions pokeData={pokeData} />}
         {/* <section id="pokemon-evolutions-section" className="container">
           <h2 className="text-2xl font-medium text-white text-center">
             Evolutions

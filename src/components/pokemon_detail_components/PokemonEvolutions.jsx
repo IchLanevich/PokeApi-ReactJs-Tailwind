@@ -11,10 +11,7 @@ const PokemonEvolutions = ({ pokeData }) => {
       </h2>
       <div className="poke-evolution-wrapper justify-center text-white flex flex-row md:flex-row md:gap-0 md:justify-evenly md:mt-6">
         {pokeData && pokeData.evolutions ? (
-          <div
-            key={pokeData.evolutions[0].id}
-            className="flex justify-center items-center"
-          >
+          <div className="flex justify-center items-center">
             <Link
               to={`/pokemon-detail/${pokeData.evolutions[0].id}`}
               reloadDocument
@@ -39,7 +36,7 @@ const PokemonEvolutions = ({ pokeData }) => {
           <AiOutlineArrowRight />
         </div>
         {pokeData && pokeData.evolutions ? (
-          <div key={pokeData.evolutions[1].id}>
+          <div>
             <Link
               to={`/pokemon-detail/${pokeData.evolutions[1].id}`}
               reloadDocument
@@ -64,13 +61,7 @@ const PokemonEvolutions = ({ pokeData }) => {
           <AiOutlineArrowRight />
         </div>
         {pokeData && pokeData.evolutions ? (
-          <div
-            key={
-              pokeData?.evolutions[2]?.id
-                ? pokeData?.evolutions[2]?.id
-                : pokeData?.evolutions[0]?.id
-            }
-          >
+          <div>
             <Link
               to={`/pokemon-detail/${
                 pokeData?.evolutions[2]?.id

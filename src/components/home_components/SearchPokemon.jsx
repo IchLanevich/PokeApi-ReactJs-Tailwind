@@ -8,8 +8,7 @@ const SearchPokemon = ({ setPokemonData }) => {
     "https://pokeapi.co/api/v2/pokemon?limit=10000"
   );
   const [allPokemonData, setAllPokemonData] = useState([]);
-  // console.log(allPokemonData);
-  // console.log(query);
+  const [isLoading, setIsLoading] = useState(true);
 
   const fetchPokemonData = async () => {
     if (query) {
@@ -21,6 +20,7 @@ const SearchPokemon = ({ setPokemonData }) => {
       const { results } = res.data;
       setAllPokemonData(results);
     }
+    setIsLoading(false);
     // console.log(results.filter((item) => item.name.includes("pika"))); only return an object with pokemon.name that have a word of pika
   };
 
@@ -44,7 +44,6 @@ const SearchPokemon = ({ setPokemonData }) => {
     const fetchPokemons = pokemonUrls.map(async (url) => {
       return await axios.get(url);
     });
-    console.log("submitted");
     setPokemonData([]);
 
     const newSearchedPokemons = [];
@@ -67,28 +66,32 @@ const SearchPokemon = ({ setPokemonData }) => {
 
   return (
     <section className="container">
-      <div className="search-comp h-full bg-darkLight p-5 rounded-sm">
-        <form
-          className="search-wrapper flex justify-center h-10 text-gray-800"
-          onSubmit={handleSubmit}
-        >
-          <input
-            type="text"
-            name=""
-            id="searchInput"
-            className="search-input rounded-tl-sm rounded-bl-sm px-3 py-4 w-44 md:w-96 text-base "
-            placeholder="Search Pokémon"
-            onChange={(e) => {
-              setQuery(e.target.value);
-            }}
-          />
-          <input
-            type="submit"
-            value="Search"
-            className="text-white px-5 bg-gray-500 border-0 rounded-tr-sm rounded-br-sm text-base hover:bg-gray-500/75 active:bg-gray-500/50"
-          />
-        </form>
-      </div>
+      {isLoading ? (
+        "Loading..."
+      ) : (
+        <div className="search-comp h-full bg-darkLight p-5 rounded-sm">
+          <form
+            className="search-wrapper flex justify-center h-10 text-gray-800"
+            onSubmit={handleSubmit}
+          >
+            <input
+              type="text"
+              name=""
+              id="searchInput"
+              className="search-input rounded-tl-sm rounded-bl-sm px-3 py-4 w-44 md:w-96 text-base "
+              placeholder="Search Pokémon"
+              onChange={(e) => {
+                setQuery(e.target.value);
+              }}
+            />
+            <input
+              type="submit"
+              value="Search"
+              className="text-white px-5 bg-gray-500 border-0 rounded-tr-sm rounded-br-sm text-base hover:bg-gray-500/75 active:bg-gray-500/50"
+            />
+          </form>
+        </div>
+      )}
     </section>
   );
 };
