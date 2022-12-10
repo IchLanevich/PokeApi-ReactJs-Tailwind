@@ -69,7 +69,7 @@ const SearchPokemon = ({ setPokemonData }) => {
     <section className="container">
       <div className="search-comp h-full bg-darkLight p-5 rounded-sm">
         <form
-          className="search-wrapper flex justify-center h-10"
+          className="search-wrapper flex justify-center h-10 text-gray-800"
           onSubmit={handleSubmit}
         >
           <input

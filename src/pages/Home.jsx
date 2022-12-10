@@ -1,18 +1,10 @@
-import PokeDex from "../components/PokeDex";
-import PokemonList from "../components/PokemonList";
-import SearchPokemon from "../components/SearchPokemon";
+import PokemonList from "../components/home_components/PokemonList";
+import SearchPokemon from "../components/home_components/SearchPokemon";
 import { useState, useEffect } from "react";
-import {
-  IMAGE_API_URL,
-  OFFICIAL_ARTWORK_URL,
-  POKEMON_API_URL,
-} from "../data/api";
-import ProgressBar from "../components/ProgressBar";
 import Navbar from "../components/Navbar";
 
 const Home = () => {
   const [pokemonData, setPokemonData] = useState([]);
-  // console.log(searchedPokeData);
 
   return (
     <>

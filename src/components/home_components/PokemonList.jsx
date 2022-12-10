@@ -4,18 +4,19 @@ import {
   IMAGE_API_URL,
   OFFICIAL_ARTWORK_URL,
   POKEMON_API_URL,
-} from "../data/api";
-import PokemonCard from "./PokemonCard";
+} from "../../data/api";
+import PokemonCard from "./pokemon_list_components/PokemonCard";
+import { iconType } from "../../utils/utils";
 
-const PokemonList = ({ searchedPokeData, setPokemonData, pokemonData }) => {
-  // const [pokemonData, setPokemonData] = useState([]);
+
+
+const PokemonList = ({ setPokemonData, pokemonData }) => {
   const [currentUrl, setCurrentUrl] = useState(POKEMON_API_URL);
   const [previousUrl, setPreviousUrl] = useState("");
   const [nextUrl, setNextUrl] = useState("");
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchData = async () => {
-    setIsLoading(true);
     const res = await axios.get(currentUrl);
     const { results } = res.data;
     setNextUrl(res.data.next);
@@ -33,7 +34,7 @@ const PokemonList = ({ searchedPokeData, setPokemonData, pokemonData }) => {
     const newPokemonData = [];
 
     const settled = await Promise.allSettled(pokemons);
-    settled.forEach((item, index) => {
+    settled.forEach((item) => {
       if (item.status === "fulfilled") {
         newPokemonData.push(item.value.data);
       }
@@ -47,34 +48,11 @@ const PokemonList = ({ searchedPokeData, setPokemonData, pokemonData }) => {
     fetchData();
   }, [currentUrl]);
 
-  const iconPath = "/assets/pokemon_types_icon/IconSvg/";
-  const iconExtension = ".svg";
-  const iconType = {
-    bug: `${iconPath}Pokemon_Type_Icon_bug${iconExtension}`,
-    dark: `${iconPath}Pokemon_Type_Icon_dark${iconExtension}`,
-    dragon: `${iconPath}Pokemon_Type_Icon_dragon${iconExtension}`,
-    electric: `${iconPath}Pokemon_Type_Icon_electric${iconExtension}`,
-    fairy: `${iconPath}Pokemon_Type_Icon_fairy${iconExtension}`,
-    fighting: `${iconPath}Pokemon_Type_Icon_fighting${iconExtension}`,
-    fire: `${iconPath}Pokemon_Type_Icon_fire${iconExtension}`,
-    flying: `${iconPath}Pokemon_Type_Icon_flying${iconExtension}`,
-    ghost: `${iconPath}Pokemon_Type_Icon_ghost${iconExtension}`,
-    grass: `${iconPath}Pokemon_Type_Icon_grass${iconExtension}`,
-    ground: `${iconPath}Pokemon_Type_Icon_ground${iconExtension}`,
-    ice: `${iconPath}Pokemon_Type_Icon_ice${iconExtension}`,
-    normal: `${iconPath}Pokemon_Type_Icon_normal${iconExtension}`,
-    poison: `${iconPath}Pokemon_Type_Icon_poison${iconExtension}`,
-    psychic: `${iconPath}Pokemon_Type_Icon_psychic${iconExtension}`,
-    rock: `${iconPath}Pokemon_Type_Icon_rock${iconExtension}`,
-    steel: `${iconPath}Pokemon_Type_Icon_steel${iconExtension}`,
-    water: `${iconPath}Pokemon_Type_Icon_water${iconExtension}`,
-  };
-
   return (
     <div className="container flex flex-col gap-4">
       <div className="pokemon-list flex flex-wrap justify-center gap-2 md:gap-3 items-start min-h-[648px]">
         {isLoading ? (
-          <h1>Loading...</h1>
+          <h1></h1>
         ) : (
           pokemonData.map((pokemon) => {
             return (
@@ -84,8 +62,6 @@ const PokemonList = ({ searchedPokeData, setPokemonData, pokemonData }) => {
                 types={pokemon.types}
                 sprites={pokemon.sprites}
                 iconType={iconType}
-                iconExtension={iconExtension}
-                iconPath={iconPath}
                 key={pokemon.id}
               />
             );

@@ -1,13 +1,13 @@
 import { Link } from "react-router-dom";
-import { capitalize } from "../utils/utils";
+import { capitalize } from "../../../utils/utils";
 
 const PokemonCard = ({ id, name, types, sprites, iconType }) => {
   return (
-    <div
-      className="card text-white w-[48%] h-36 p-3 rounded-md hover:shadow-[0px_0px_15px_rgba(255,255,255,0.2)] transition duration-[50ms] ease-in-out border-2 border-dashed border-white/25 md:w-40 md:h-52"
-      key={id}
-    >
-      <Link to={`/pokemon-detail/${id}`}>
+    <Link to={`/pokemon-detail/${id}`}>
+      <div
+        className="card text-white w-[48%] h-36 p-3 rounded-md hover:shadow-[0px_0px_15px_rgba(255,255,255,0.2)] transition duration-[50ms] ease-in-out border-2 border-dashed border-white/25 md:w-40 md:h-52"
+        key={id}
+      >
         <div className="pokemon-name-wrapper flex items-center">
           <p className="font-semibold flex grow break-all text-left text-xs md:text-base truncate">
             {capitalize(name)}
@@ -35,8 +35,8 @@ const PokemonCard = ({ id, name, types, sprites, iconType }) => {
             alt={name}
           />
         </div>
-      </Link>
-    </div>
+      </div>
+    </Link>
   );
 };
 
