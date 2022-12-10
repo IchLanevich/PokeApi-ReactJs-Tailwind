@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useMemo } from "react";
 import { useState, useEffect } from "react";
 
 const SearchPokemon = ({ setPokemonData }) => {

@@ -47,7 +47,7 @@ const PokemonList = ({ searchedPokeData, setPokemonData, pokemonData }) => {
     fetchData();
   }, [currentUrl]);
 
-  const iconPath = "public/assets/pokemon_types_icon/IconSvg/";
+  const iconPath = "/assets/pokemon_types_icon/IconSvg/";
   const iconExtension = ".svg";
   const iconType = {
     bug: `${iconPath}Pokemon_Type_Icon_bug${iconExtension}`,

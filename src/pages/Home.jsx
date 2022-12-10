@@ -7,19 +7,27 @@ import {
   OFFICIAL_ARTWORK_URL,
   POKEMON_API_URL,
 } from "../data/api";
+import ProgressBar from "../components/ProgressBar";
+import Navbar from "../components/Navbar";
 
 const Home = () => {
   const [pokemonData, setPokemonData] = useState([]);
   // console.log(searchedPokeData);
 
   return (
-    <div className="Home flex flex-col justify-center items-center space-y-6">
-      <SearchPokemon
-        setPokemonData={setPokemonData}
-        pokemonData={pokemonData}
-      />
-      <PokemonList setPokemonData={setPokemonData} pokemonData={pokemonData} />
-    </div>
+    <>
+      <Navbar />
+      <div className="Home flex flex-col justify-center items-center space-y-6">
+        <SearchPokemon
+          setPokemonData={setPokemonData}
+          pokemonData={pokemonData}
+        />
+        <PokemonList
+          setPokemonData={setPokemonData}
+          pokemonData={pokemonData}
+        />
+      </div>
+    </>
   );
 };
 

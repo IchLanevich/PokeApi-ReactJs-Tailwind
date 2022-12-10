@@ -70,7 +70,11 @@ const PokeDex = () => {
   // To count key object inside iconType object
   // console.log(Object.keys(iconType));
 
-  return <div className="container flex flex-wrap gap-4"></div>;
+  return (
+    <div className="container flex flex-wrap gap-4">
+      <h1>Hellow</h1>
+    </div>
+  );
 };
 
 export default PokeDex;
