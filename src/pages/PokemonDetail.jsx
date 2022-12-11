@@ -6,11 +6,13 @@ import Navbar from "../components/Navbar";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { capitalize } from "../utils/utils";
-import PokemonAbout from "../components/pokemon_detail_components/PokemonAbout";
-import PokemonImage from "../components/pokemon_detail_components/PokemonImage";
-import PokemonStats from "../components/pokemon_detail_components/PokemonStats";
+import PokemonAbout from "../components/pokemon_detail_components/pokemon_about_stats/PokemonAbout";
+import PokemonImage from "../components/pokemon_detail_components/pokemon_about_stats/PokemonImage";
+import PokemonStats from "../components/pokemon_detail_components/pokemon_about_stats/PokemonStats";
 import PokemonBiography from "../components/pokemon_detail_components/PokemonBiography";
 import PokemonEvolutions from "../components/pokemon_detail_components/PokemonEvolutions";
+import PokemonAboutStats from "../components/pokemon_detail_components/PokemonAboutStats";
+import Footer from "../components/Footer";
 
 const PokemonDetail = ({ iconType, elementBgColor }) => {
   const { id } = useParams();
@@ -69,6 +71,17 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
         tempTextArr.push(text);
       }
     });
+    // speciesData.names.map((names) => {
+    //   console.log(names.names);
+    // });
+    let namesInDifferentLanguange = [];
+    speciesData.forEach((data) => {
+      namesInDifferentLanguange.push(data.names);
+    });
+    let allSpeciesData = [];
+    speciesData.forEach((data) => {
+      allSpeciesData.push(data);
+    });
 
     const pokemonObject = {
       id: data.id,
@@ -89,8 +102,8 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
       sprites: data.sprites.other["official-artwork"].front_default,
       stats: data.stats,
       totalStats: totalStat,
-      names: speciesData[0].names,
-      species: speciesData[0],
+      names: speciesData,
+      species: allSpeciesData,
       flavorTextArr: tempTextArr,
       evolutions: speciesData.map((species) => {
         return {
@@ -127,127 +140,19 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
       </div>
       <main className="flex flex-col gap-8">
         <section
-          className={`pokemon-wrapper container mx-auto mt-4 p-4 flex flex-col md:flex-row justify-center gap-8 md:p-4 md:flex-col lg:flex-row`}
+          className={`pokemon-wrapper container mx-auto mt-4 flex flex-col md:flex-row justify-center gap-8 md:p-4 md:flex-col lg:flex-row`}
         >
-          <div className="flex flex-col p-3 gap-12 w-full justify-center md:flex-row">
-            {isLoading ? (
-              "Loading..."
-            ) : (
-              <PokemonImage
-                pokeData={pokeData}
-                is3DView={is3DView}
-                handle3DView={handle3DView}
-              />
-            )}
-            {isLoading ? "" : <PokemonAbout pokeData={pokeData} />}
-            {isLoading ? "" : <PokemonStats pokeData={pokeData} />}
-          </div>
+          <PokemonAboutStats
+            pokeData={pokeData}
+            isLoading={isLoading}
+            is3DView={is3DView}
+            handle3DView={handle3DView}
+          />
         </section>
         {isLoading ? "" : <PokemonBiography pokeData={pokeData} />}
         {isLoading ? "" : <PokemonEvolutions pokeData={pokeData} />}
-        {/* <section id="pokemon-evolutions-section" className="container">
-          <h2 className="text-2xl font-medium text-white text-center">
-            Evolutions
-          </h2>
-          <div className="poke-evolution-wrapper justify-center text-white flex flex-row md:flex-row md:gap-0 md:justify-evenly md:mt-6">
-            {pokeData && pokeData.evolutions ? (
-              <div
-                key={pokeData.evolutions[0].id}
-                className="flex justify-center items-center"
-              >
-                <Link
-                  to={`/pokemon-detail/${pokeData.evolutions[0].id}`}
-                  reloadDocument
-                >
-                  <LazyLoadImage
-                    className="object-contain w-16 md:w-52 md:h-52"
-                    src={pokeData.evolutions[0].imgUrl}
-                    alt={pokeData.evolutions[0].name}
-                    effect="blur"
-                  />
-                  <div className="name-wrapper">
-                    <h3 className="text-center">
-                      {capitalize(pokeData.evolutions[0].name)}
-                    </h3>
-                  </div>
-                </Link>
-              </div>
-            ) : (
-              ""
-            )}
-            <div className="right-arrow text-2xl md:text-4xl flex items-center justify-center">
-              <AiOutlineArrowRight />
-            </div>
-            {pokeData && pokeData.evolutions ? (
-              <div key={pokeData.evolutions[1].id}>
-                <Link
-                  to={`/pokemon-detail/${pokeData.evolutions[1].id}`}
-                  reloadDocument
-                >
-                  <LazyLoadImage
-                    className="object-contain w-16 md:w-52 md:h-52"
-                    src={pokeData.evolutions[1].imgUrl}
-                    alt={pokeData.evolutions[1].name}
-                    effect="blur"
-                  />
-                  <div className="name-wrapper">
-                    <h3 className="text-center">
-                      {capitalize(pokeData.evolutions[1].name)}
-                    </h3>
-                  </div>
-                </Link>
-              </div>
-            ) : (
-              ""
-            )}
-            <div className="right-arrow text-2xl md:text-4xl flex items-center justify-center">
-              <AiOutlineArrowRight />
-            </div>
-            {pokeData && pokeData.evolutions ? (
-              <div
-                key={
-                  pokeData?.evolutions[2]?.id
-                    ? pokeData?.evolutions[2]?.id
-                    : pokeData?.evolutions[0]?.id
-                }
-              >
-                <Link
-                  to={`/pokemon-detail/${
-                    pokeData?.evolutions[2]?.id
-                      ? pokeData?.evolutions[2]?.id
-                      : pokeData?.evolutions[0]?.id
-                  }`}
-                  reloadDocument
-                >
-                  <LazyLoadImage
-                    className="object-contain w-16 md:w-52 md:h-52"
-                    src={
-                      pokeData?.evolutions[2]?.imgUrl
-                        ? pokeData?.evolutions[2]?.imgUrl
-                        : "https://ik.imagekit.io/ichlanevich/not_available_evo_img.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670585605233"
-                    }
-                    alt={
-                      pokeData?.evolutions[2]?.name
-                        ? pokeData?.evolutions[2]?.name
-                        : ""
-                    }
-                    effect="blur"
-                  />
-                  <div className="name-wrapper">
-                    <h3 className="text-center">
-                      {pokeData?.evolutions[2]?.name
-                        ? capitalize(pokeData?.evolutions[2]?.name)
-                        : ""}
-                    </h3>
-                  </div>
-                </Link>
-              </div>
-            ) : (
-              ""
-            )}
-          </div>
-        </section> */}
       </main>
+      <Footer />
     </>
   );
 };

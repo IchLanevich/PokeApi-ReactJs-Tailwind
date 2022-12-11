@@ -5,7 +5,7 @@ const PokemonCard = ({ id, name, types, sprites, iconType }) => {
   return (
     <Link to={`/pokemon-detail/${id}`}>
       <div
-        className="card text-white w-[48%] h-36 p-3 rounded-md hover:shadow-[0px_0px_15px_rgba(255,255,255,0.2)] transition duration-[50ms] ease-in-out border-2 border-dashed border-white/25 md:w-40 md:h-52"
+        className="card text-white  h-36 p-3 rounded-md hover:shadow-[0px_0px_15px_rgba(255,255,255,0.2)] transition duration-[50ms] ease-in-out border-2 border-dashed border-white/25 md:w-40 md:h-52"
         key={id}
       >
         <div className="pokemon-name-wrapper flex items-center">

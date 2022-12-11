@@ -66,32 +66,28 @@ const SearchPokemon = ({ setPokemonData }) => {
 
   return (
     <section className="container">
-      {isLoading ? (
-        "Loading..."
-      ) : (
-        <div className="search-comp h-full bg-darkLight p-5 rounded-sm">
-          <form
-            className="search-wrapper flex justify-center h-10 text-gray-800"
-            onSubmit={handleSubmit}
-          >
-            <input
-              type="text"
-              name=""
-              id="searchInput"
-              className="search-input rounded-tl-sm rounded-bl-sm px-3 py-4 w-44 md:w-96 text-base "
-              placeholder="Search Pokémon"
-              onChange={(e) => {
-                setQuery(e.target.value);
-              }}
-            />
-            <input
-              type="submit"
-              value="Search"
-              className="text-white px-5 bg-gray-500 border-0 rounded-tr-sm rounded-br-sm text-base hover:bg-gray-500/75 active:bg-gray-500/50"
-            />
-          </form>
-        </div>
-      )}
+      <div className="search-comp h-full bg-darkLight p-5 rounded-sm">
+        <form
+          className="search-wrapper flex justify-center h-10 text-gray-800"
+          onSubmit={handleSubmit}
+        >
+          <input
+            type="text"
+            name=""
+            id="searchInput"
+            className="search-input rounded-tl-sm rounded-bl-sm px-3 py-4 w-44 md:w-96 text-base "
+            placeholder="Search Pokémon"
+            onChange={(e) => {
+              setQuery(e.target.value);
+            }}
+          />
+          <input
+            type="submit"
+            value="Search"
+            className="text-white px-5 bg-gray-500 border-0 rounded-tr-sm rounded-br-sm text-base hover:bg-gray-500/75 active:bg-gray-500/50"
+          />
+        </form>
+      </div>
     </section>
   );
 };

@@ -1,20 +1,20 @@
-import { capitalize } from "../../utils/utils";
-import ProgressBar from "../ProgressBar";
+import { capitalize } from "../../../utils/utils";
+import ProgressBar from "../../ProgressBar";
 
 const PokemonStats = (props) => {
   const { pokeData } = props;
   return (
-    <article className="pokemon-stats w-full md:w-3/12  ">
-      <h2 className="border-b-2 border-dashed border-b-white/75 px-4 py-2 text-xl font-medium">
+    <article className="pokemon-stats w-full lg:w-6/12 flex flex-col">
+      <h2 className="border-b-2 border-dashed border-b-white/75 px-4 py-2 text-xl md:text-center lg:text-left font-medium">
         Stats
       </h2>
       <table className="mt-4">
-        <tbody className="w-80">
+        <tbody>
           {pokeData.stats &&
             pokeData.stats.map((item) => {
               return (
                 <tr key={item.stat.name}>
-                  <td className="pl-4 py-2">
+                  <td className="pl-4 py-2 w-0">
                     {item.stat.name.slice(0, 7) === "special"
                       ? `Sp. ${
                           item.stat.name.slice(8).charAt(0).toUpperCase() +
@@ -24,7 +24,7 @@ const PokemonStats = (props) => {
                       ? capitalize(item.stat.name)
                       : capitalize(item.stat.name)}
                   </td>
-                  <td className="w-52 px-4 py-2">
+                  <td className="md:w-52 px-4 py-2">
                     <ProgressBar completed={item.base_stat} />
                   </td>
                 </tr>

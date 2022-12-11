@@ -1,14 +1,14 @@
-import { capitalize, elementBgColor, iconType } from "../../utils/utils";
+import { capitalize, elementBgColor, iconType } from "../../../utils/utils";
 
 const PokemonAbout = (props) => {
   const { pokeData } = props;
   return (
-    <article className="pokemon-about w-full md:w-3/12">
-      <h2 className="border-b-2 border-dashed border-b-white/75 px-4 py-2 text-xl font-medium">
+    <article className="pokemon-about w-full flex flex-col lg:w-6/12">
+      <h2 className="border-b-2 border-dashed border-b-white/75 px-4 py-2 text-xl w-full md:text-center lg:text-left font-medium">
         About
       </h2>
       <table className="mt-4">
-        <tbody>
+        <tbody className="w-full">
           <tr>
             <td className="pl-4 py-2">Name</td>
             <td className="pl-4 py-2">
@@ -37,7 +37,7 @@ const PokemonAbout = (props) => {
             </td>
           </tr>
           <tr>
-            <td className="pl-4 py-2 px-4 py-2 ">Type</td>
+            <td className="pl-4 py-2py-2 ">Type</td>
             <td className="flex gap-3 pl-3 md:pl-4 py-2 flex-wrap">
               {pokeData.type &&
                 pokeData.type.map((name) => {
@@ -56,7 +56,7 @@ const PokemonAbout = (props) => {
             </td>
           </tr>
           <tr>
-            <td className="pl-4 py-2 px-4 py-2">Forms</td>
+            <td className="pl-4 py-2 py-2">Forms</td>
             <td className="flex gap-3 pl-3 md:pl-4 py-2">
               {pokeData.forms &&
                 pokeData.forms.map((name) => {

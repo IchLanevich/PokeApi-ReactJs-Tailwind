@@ -8,8 +8,6 @@ import {
 import PokemonCard from "./pokemon_list_components/PokemonCard";
 import { iconType } from "../../utils/utils";
 
-
-
 const PokemonList = ({ setPokemonData, pokemonData }) => {
   const [currentUrl, setCurrentUrl] = useState(POKEMON_API_URL);
   const [previousUrl, setPreviousUrl] = useState("");

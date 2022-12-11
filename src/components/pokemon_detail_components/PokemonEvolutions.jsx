@@ -9,12 +9,13 @@ const PokemonEvolutions = ({ pokeData }) => {
       <h2 className="text-2xl font-medium text-white text-center">
         Evolutions
       </h2>
-      <div className="poke-evolution-wrapper justify-center text-white flex flex-row md:flex-row md:gap-0 md:justify-evenly md:mt-6">
+      <div className="poke-evolution-wrapper justify-center mt-6 text-white flex flex-row md:flex-row md:gap-0 md:justify-evenly md:mt-6">
         {pokeData && pokeData.evolutions ? (
           <div className="flex justify-center items-center">
             <Link
               to={`/pokemon-detail/${pokeData.evolutions[0].id}`}
               reloadDocument
+              className="flex flex-col justify-center"
             >
               <LazyLoadImage
                 className="object-contain w-16 md:w-52 md:h-52"
@@ -23,7 +24,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                 effect="blur"
               />
               <div className="name-wrapper">
-                <h3 className="text-center">
+                <h3 className="text-center text-xs">
                   {capitalize(pokeData.evolutions[0].name)}
                 </h3>
               </div>
@@ -32,7 +33,7 @@ const PokemonEvolutions = ({ pokeData }) => {
         ) : (
           ""
         )}
-        <div className="right-arrow text-2xl md:text-4xl flex items-center justify-center">
+        <div className="right-arrow text-2xl mb-8 lg:mb-0 md:text-4xl flex items-center justify-center">
           <AiOutlineArrowRight />
         </div>
         {pokeData && pokeData.evolutions ? (
@@ -40,6 +41,7 @@ const PokemonEvolutions = ({ pokeData }) => {
             <Link
               to={`/pokemon-detail/${pokeData.evolutions[1].id}`}
               reloadDocument
+              className="flex flex-col justify-center"
             >
               <LazyLoadImage
                 className="object-contain w-16 md:w-52 md:h-52"
@@ -48,7 +50,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                 effect="blur"
               />
               <div className="name-wrapper">
-                <h3 className="text-center">
+                <h3 className="text-center text-xs">
                   {capitalize(pokeData.evolutions[1].name)}
                 </h3>
               </div>
@@ -57,7 +59,7 @@ const PokemonEvolutions = ({ pokeData }) => {
         ) : (
           ""
         )}
-        <div className="right-arrow text-2xl md:text-4xl flex items-center justify-center">
+        <div className="right-arrow text-2xl md:text-4xl mb-8 lg:mb-0 flex items-center justify-center">
           <AiOutlineArrowRight />
         </div>
         {pokeData && pokeData.evolutions ? (
@@ -69,6 +71,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                   : pokeData?.evolutions[0]?.id
               }`}
               reloadDocument
+              className="flex flex-col justify-center"
             >
               <LazyLoadImage
                 className="object-contain w-16 md:w-52 md:h-52"
@@ -85,7 +88,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                 effect="blur"
               />
               <div className="name-wrapper">
-                <h3 className="text-center">
+                <h3 className="text-center text-xs">
                   {pokeData?.evolutions[2]?.name
                     ? capitalize(pokeData?.evolutions[2]?.name)
                     : ""}

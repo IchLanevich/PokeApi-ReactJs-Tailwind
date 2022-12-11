@@ -2,6 +2,7 @@ import PokemonList from "../components/home_components/PokemonList";
 import SearchPokemon from "../components/home_components/SearchPokemon";
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const [pokemonData, setPokemonData] = useState([]);
@@ -19,6 +20,7 @@ const Home = () => {
           pokemonData={pokemonData}
         />
       </div>
+      <Footer />
     </>
   );
 };
