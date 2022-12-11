@@ -52,7 +52,7 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e2e2e",endCo
 }
 
 .cave {
-  background-image: url(/assets/pokedex_habitat_background/Cave.png);
+  background-image: linear-gradient(0deg, rgba(13, 13, 13,0.9) 50%, rgba(13, 13, 13,1) 100%),url(/assets/pokedex_habitat_background/Cave.png);
   background-repeat: no-repeat;
   background-size: cover;
 }
