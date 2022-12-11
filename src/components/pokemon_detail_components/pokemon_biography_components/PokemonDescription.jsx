@@ -2,11 +2,14 @@ import { capitalize } from "../../../utils/utils";
 
 const PokemonDescription = ({ pokeData }) => {
   const isExist = (id) => {
-    if (pokeData.species[id].id === pokeData.id) {
-      return true;
-    } else {
-      return false;
+    if (pokeData.species[id]) {
+      if (pokeData.species[id].id === pokeData.id) {
+        return true;
+      } else {
+        return false;
+      }
     }
+    return;
   };
 
   return (
