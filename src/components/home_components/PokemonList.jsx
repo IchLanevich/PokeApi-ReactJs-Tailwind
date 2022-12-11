@@ -66,7 +66,7 @@ const PokemonList = ({ setPokemonData, pokemonData }) => {
           })
         )}
       </div>
-      <div className="pagination-wrapper flex gap-4 justify-center">
+      <div className="pagination-wrapper flex gap-4 justify-center mb-12">
         {previousUrl && (
           <button
             className="bg-darkLight hover:bg-darkLight/75 active:bg-darkLight/50 px-4 py-2 rounded-md text-white"

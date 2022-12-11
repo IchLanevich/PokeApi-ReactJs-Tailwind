@@ -9,7 +9,7 @@ const PokemonEvolutions = ({ pokeData }) => {
       <h2 className="text-2xl font-medium text-white text-center">
         Evolutions
       </h2>
-      <div className="poke-evolution-wrapper justify-center mt-6 text-white flex flex-row md:flex-row md:gap-0 md:justify-evenly md:mt-6">
+      <div className="poke-evolution-wrapper px-6 mb-16 grid grid-cols-5 items-center content-evenly justify-items-center mt-6 text-white  md:flex-row md:gap-0 md:justify-evenly md:mt-6">
         {pokeData && pokeData.evolutions ? (
           <div className="flex justify-center items-center">
             <Link
