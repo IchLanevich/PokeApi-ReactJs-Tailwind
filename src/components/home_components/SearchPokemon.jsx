@@ -65,7 +65,7 @@ const SearchPokemon = ({ setPokemonData }) => {
   //
 
   return (
-    <section className="container">
+    <section className="container px-2">
       <div className="search-comp h-full bg-darkLight p-5 rounded-sm">
         <form
           className="search-wrapper flex justify-center h-10 text-gray-800"

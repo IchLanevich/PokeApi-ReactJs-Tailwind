@@ -45,10 +45,10 @@ const PokemonList = ({ setPokemonData, pokemonData }) => {
   useEffect(() => {
     fetchData();
   }, [currentUrl]);
-
+  // flex flex-wrap justify-center gap-2 md:gap-3 items-start
   return (
-    <div className="container flex flex-col gap-4">
-      <div className="pokemon-list flex flex-wrap justify-center gap-2 md:gap-3 items-start min-h-[648px]">
+    <div className="container flex flex-col gap-4 px-2">
+      <div className="pokemon-list grid grid-cols-2 items-center gap-2 justify-center sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-6 xl:grid-cols-7 md:gap-3 grid-flow-row min-h-[648px]">
         {isLoading ? (
           <h1></h1>
         ) : (
