@@ -152,7 +152,6 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
         {isLoading ? "" : <PokemonBiography pokeData={pokeData} />}
         {isLoading ? "" : <PokemonEvolutions pokeData={pokeData} />}
       </main>
-      <Footer />
     </>
   );
 };

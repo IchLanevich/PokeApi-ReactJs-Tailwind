@@ -20,7 +20,6 @@ const Home = () => {
           pokemonData={pokemonData}
         />
       </div>
-      <Footer />
     </>
   );
 };

@@ -24,7 +24,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                 effect="blur"
               />
               <div className="name-wrapper">
-                <h3 className="text-center text-xs">
+                <h3 className="text-center text-xs md:text-xl">
                   {capitalize(pokeData.evolutions[0].name)}
                 </h3>
               </div>
@@ -50,7 +50,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                 effect="blur"
               />
               <div className="name-wrapper">
-                <h3 className="text-center text-xs">
+                <h3 className="text-center text-xs md:text-xl">
                   {capitalize(pokeData.evolutions[1].name)}
                 </h3>
               </div>
@@ -88,7 +88,7 @@ const PokemonEvolutions = ({ pokeData }) => {
                 effect="blur"
               />
               <div className="name-wrapper">
-                <h3 className="text-center text-xs">
+                <h3 className="text-center text-xs md:text-xl">
                   {pokeData?.evolutions[2]?.name
                     ? capitalize(pokeData?.evolutions[2]?.name)
                     : ""}
