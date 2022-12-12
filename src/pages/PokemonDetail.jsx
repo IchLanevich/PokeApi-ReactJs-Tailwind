@@ -6,13 +6,9 @@ import Navbar from "../components/Navbar";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { capitalize } from "../utils/utils";
-import PokemonAbout from "../components/pokemon_detail_components/pokemon_about_stats/PokemonAbout";
-import PokemonImage from "../components/pokemon_detail_components/pokemon_about_stats/PokemonImage";
-import PokemonStats from "../components/pokemon_detail_components/pokemon_about_stats/PokemonStats";
 import PokemonBiography from "../components/pokemon_detail_components/PokemonBiography";
 import PokemonEvolutions from "../components/pokemon_detail_components/PokemonEvolutions";
 import PokemonAboutStats from "../components/pokemon_detail_components/PokemonAboutStats";
-import Footer from "../components/Footer";
 
 const PokemonDetail = ({ iconType, elementBgColor }) => {
   const { id } = useParams();
@@ -27,10 +23,17 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
     const fetchPokeSpecies = await axios.get(data.species.url);
     const evoChain = await axios.get(fetchPokeSpecies.data.evolution_chain.url);
     const evolutionData = evoChain.data;
+
     const firstSpeciesUrl = evolutionData.chain.species.url;
-    const secondSpeciesUrl = evolutionData.chain.evolves_to[0].species.url;
+    const secondSpeciesUrl = evolutionData?.chain?.evolves_to[0]?.species?.url;
     const thirdSpeciesUrl =
-      evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species.url;
+      evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.url;
+
+    function checkNested(obj, level, ...rest) {
+      if (obj === undefined) return false;
+      if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
+      return checkNested(obj[level], ...rest);
+    }
 
     const speciesUrl = [];
 
@@ -136,7 +139,6 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
         <h1 className="text-3xl font-bold tracking-wider">
           {isLoading ? "" : capitalize(pokeData.name)}
         </h1>
-        {/* <h1>{pokeData.name || <Skeleton width={100} height={200} />}</h1> */}
       </div>
       <main className="flex flex-col gap-8">
         <section

@@ -39,19 +39,31 @@ const PokemonEvolutions = ({ pokeData }) => {
         {pokeData && pokeData.evolutions ? (
           <div>
             <Link
-              to={`/pokemon-detail/${pokeData.evolutions[1].id}`}
+              to={`/pokemon-detail/${
+                pokeData?.evolutions[1]?.id
+                  ? pokeData.evolutions[1].id
+                  : pokeData.evolutions[0].id
+              }`}
               reloadDocument
               className="flex flex-col justify-center"
             >
               <LazyLoadImage
                 className="object-contain w-16 md:w-52 md:h-52"
-                src={pokeData.evolutions[1].imgUrl}
-                alt={pokeData.evolutions[1].name}
+                src={
+                  pokeData?.evolutions[1]?.imgUrl
+                    ? pokeData?.evolutions[1]?.imgUrl
+                    : "https://ik.imagekit.io/ichlanevich/not_available_evo_img.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670585605233"
+                }
+                alt={pokeData?.evolutions[1]?.name}
                 effect="blur"
               />
               <div className="name-wrapper">
                 <h3 className="text-center text-xs md:text-xl">
-                  {capitalize(pokeData.evolutions[1].name)}
+                  {capitalize(
+                    pokeData?.evolutions[1]?.name
+                      ? pokeData?.evolutions[1]?.name
+                      : ""
+                  )}
                 </h3>
               </div>
             </Link>

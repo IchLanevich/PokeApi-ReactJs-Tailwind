@@ -73,7 +73,6 @@ const SearchPokemon = ({ setPokemonData }) => {
         >
           <input
             type="text"
-            name=""
             id="searchInput"
             className="search-input rounded-tl-sm rounded-bl-sm px-3 py-4 w-44 md:w-96 text-base "
             placeholder="Search Pokémon"
