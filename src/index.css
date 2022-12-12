@@ -51,6 +51,11 @@ filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#2e2e2e",endCo
   background-color: #6b6b6b;
 }
 
+.unknown {
+  background-image: linear-gradient(0deg, rgba(13, 13, 13,0.9) 50%, rgba(13, 13, 13,1) 100%),url(/assets/pokedex_habitat_background/Unknown.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .cave {
   background-image: linear-gradient(0deg, rgba(13, 13, 13,0.9) 50%, rgba(13, 13, 13,1) 100%),url(/assets/pokedex_habitat_background/Cave.png);
   background-repeat: no-repeat;

@@ -74,9 +74,27 @@ const PokemonDescription = ({ pokeData }) => {
           <tr>
             <td className="pl-2 py-1">Habitat</td>
             <td className="pl-6 py-1">
-              {isExist(0) ? capitalize(pokeData.species[0].habitat.name) : ""}
-              {isExist(1) ? capitalize(pokeData.species[1].habitat.name) : ""}
-              {isExist(2) ? capitalize(pokeData.species[2].habitat.name) : ""}
+              {isExist(0)
+                ? capitalize(
+                    pokeData.species[0]?.habitat?.name
+                      ? pokeData.species[0]?.habitat?.name
+                      : ""
+                  )
+                : ""}
+              {isExist(0)
+                ? capitalize(
+                    pokeData.species[1]?.habitat?.name
+                      ? pokeData.species[1]?.habitat?.name
+                      : ""
+                  )
+                : ""}
+              {isExist(0)
+                ? capitalize(
+                    pokeData.species[2]?.habitat?.name
+                      ? pokeData.species[2]?.habitat?.name
+                      : ""
+                  )
+                : ""}
             </td>
           </tr>
           <tr>

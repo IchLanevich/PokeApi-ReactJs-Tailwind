@@ -8,9 +8,9 @@ const PokemonBiography = (props) => {
     <section id="pokemon-description" className="container p-3 md:p-0">
       <div
         className={`pokemon-desc-wrapper px-6 py-6 rounded-lg ${
-          pokeData.species[0] && pokeData.species[0].habitat.name
-            ? pokeData.species[0].habitat.name
-            : ""
+          pokeData.species[0] && pokeData?.species[0]?.habitat?.name
+            ? pokeData.species[0]?.habitat?.name
+            : "unknown"
         }`}
       >
         <div className="wrapper md:flex w-full gap-6 justify-evenly ">

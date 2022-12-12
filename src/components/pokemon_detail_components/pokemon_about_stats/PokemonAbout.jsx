@@ -57,7 +57,7 @@ const PokemonAbout = (props) => {
           </tr>
           <tr>
             <td className="pl-4 py-2 py-2">Forms</td>
-            <td className="flex gap-3 pl-3 md:pl-4 py-2">
+            <td className="flex gap-3 pl-3 md:pl-4 py-2 flex-wrap">
               {pokeData.forms &&
                 pokeData.forms.map((name) => {
                   let typeName = pokeData.type[0];

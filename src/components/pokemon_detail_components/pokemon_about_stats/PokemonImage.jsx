@@ -4,11 +4,11 @@ import "react-lazy-load-image-component/src/effects/blur.css";
 const PokemonImage = (props) => {
   const { pokeData, is3DView, handle3DView } = props;
   return (
-    <div className="pokemon-image mx-auto flex flex-col my-auto items-center lg:mx-0">
+    <div className="pokemon-image mx-auto flex flex-col mb-auto items-center lg:mx-0">
       {pokeData.sprites && (
         <div className="img-wrapper border-2 border-dashed mb-6 lg:md-0 border-white/50 relative m-0 bg-darkLight rounded-md p-4 flex md:h-80 md:w-80">
           <LazyLoadImage
-            className="mx-auto my-auto object-contain w-full max-h-96"
+            className="mx-auto my-auto object-contain w-full max-h-96 max-w-96"
             src={
               is3DView
                 ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokeData.id}.png`
