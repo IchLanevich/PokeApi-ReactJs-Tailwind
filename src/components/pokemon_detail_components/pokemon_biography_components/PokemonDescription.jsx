@@ -81,14 +81,14 @@ const PokemonDescription = ({ pokeData }) => {
                       : ""
                   )
                 : ""}
-              {isExist(0)
+              {isExist(1)
                 ? capitalize(
                     pokeData.species[1]?.habitat?.name
                       ? pokeData.species[1]?.habitat?.name
                       : ""
                   )
                 : ""}
-              {isExist(0)
+              {isExist(2)
                 ? capitalize(
                     pokeData.species[2]?.habitat?.name
                       ? pokeData.species[2]?.habitat?.name

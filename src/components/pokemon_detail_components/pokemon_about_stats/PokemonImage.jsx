@@ -1,6 +1,6 @@
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-
+import { FiImage } from "react-icons/fi";
 const PokemonImage = (props) => {
   const { pokeData, is3DView, handle3DView } = props;
   return (
@@ -8,7 +8,7 @@ const PokemonImage = (props) => {
       {pokeData.sprites && (
         <div className="img-wrapper border-2 border-dashed mb-6 lg:md-0 border-white/50 relative m-0 bg-darkLight rounded-md p-4 flex md:h-80 md:w-80">
           <LazyLoadImage
-            className="mx-auto my-auto object-contain w-full max-h-96 max-w-96"
+            className="mx-auto my-auto object-contain w-full max-h-64 max-w-64"
             src={
               is3DView
                 ? `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/home/${pokeData.id}.png`
@@ -30,7 +30,7 @@ const PokemonImage = (props) => {
               htmlFor="3dview"
               className="label-for-check select-none cursor-pointer h-10 w-10 bg-gray-700 absolute top-2 right-2 flex justify-center items-center rounded-md border-2 border-white/50 border-dashed"
             >
-              3D
+              <FiImage />
             </label>
           </div>
         </div>

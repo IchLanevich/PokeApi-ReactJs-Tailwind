@@ -40,9 +40,7 @@ const PokemonEvolutions = ({ pokeData }) => {
           <div>
             <Link
               to={`/pokemon-detail/${
-                pokeData?.evolutions[1]?.id
-                  ? pokeData.evolutions[1].id
-                  : pokeData.evolutions[0].id
+                pokeData.evolutions[1]?.id ?? pokeData.evolutions[0]?.id
               }`}
               reloadDocument
               className="flex flex-col justify-center"
@@ -50,9 +48,8 @@ const PokemonEvolutions = ({ pokeData }) => {
               <LazyLoadImage
                 className="object-contain w-16 md:w-52 md:h-52"
                 src={
-                  pokeData?.evolutions[1]?.imgUrl
-                    ? pokeData?.evolutions[1]?.imgUrl
-                    : "https://ik.imagekit.io/ichlanevich/not_available_evo_img.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670585605233"
+                  pokeData?.evolutions[1]?.imgUrl ??
+                  "https://ik.imagekit.io/ichlanevich/not_available_evo_img.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670585605233"
                 }
                 alt={pokeData?.evolutions[1]?.name}
                 effect="blur"
@@ -78,9 +75,7 @@ const PokemonEvolutions = ({ pokeData }) => {
           <div>
             <Link
               to={`/pokemon-detail/${
-                pokeData?.evolutions[2]?.id
-                  ? pokeData?.evolutions[2]?.id
-                  : pokeData?.evolutions[0]?.id
+                pokeData.evolutions[2]?.id ?? pokeData.evolutions[0]?.id
               }`}
               reloadDocument
               className="flex flex-col justify-center"
@@ -88,15 +83,10 @@ const PokemonEvolutions = ({ pokeData }) => {
               <LazyLoadImage
                 className="object-contain w-16 md:w-52 md:h-52"
                 src={
-                  pokeData?.evolutions[2]?.imgUrl
-                    ? pokeData?.evolutions[2]?.imgUrl
-                    : "https://ik.imagekit.io/ichlanevich/not_available_evo_img.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670585605233"
+                  pokeData?.evolutions[2]?.imgUrl ??
+                  "https://ik.imagekit.io/ichlanevich/not_available_evo_img.png?ik-sdk-version=javascript-1.4.3&updatedAt=1670585605233"
                 }
-                alt={
-                  pokeData?.evolutions[2]?.name
-                    ? pokeData?.evolutions[2]?.name
-                    : ""
-                }
+                alt={pokeData?.evolutions[2]?.name ?? "pokemon-not-available"}
                 effect="blur"
               />
               <div className="name-wrapper">
