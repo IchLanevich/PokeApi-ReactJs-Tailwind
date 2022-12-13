@@ -10,7 +10,7 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="Home flex flex-col space-y-6">
+      <div className="Home flex flex-col space-y-6 w-11/12">
         <SearchPokemon
           setPokemonData={setPokemonData}
           pokemonData={pokemonData}
