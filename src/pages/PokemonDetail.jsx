@@ -24,26 +24,21 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
     const evoChain = await axios.get(fetchPokeSpecies.data.evolution_chain.url);
     const evolutionData = evoChain.data;
 
-    const firstSpeciesUrl = evolutionData.chain.species.url;
-    const secondSpeciesUrl = evolutionData?.chain?.evolves_to[0]?.species?.url;
+    const firstSpeciesUrl = evolutionData.chain.species.url ?? "";
+    const secondSpeciesUrl =
+      evolutionData?.chain?.evolves_to[0]?.species?.url ?? "";
     const thirdSpeciesUrl =
-      evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.url;
-
-    function checkNested(obj, level, ...rest) {
-      if (obj === undefined) return false;
-      if (rest.length == 0 && obj.hasOwnProperty(level)) return true;
-      return checkNested(obj[level], ...rest);
-    }
+      evolutionData?.chain?.evolves_to[0]?.evolves_to[0]?.species?.url ?? "";
 
     const speciesUrl = [];
 
-    if (firstSpeciesUrl !== " ") {
+    if (firstSpeciesUrl) {
       speciesUrl.push(firstSpeciesUrl);
     }
-    if (secondSpeciesUrl !== "") {
+    if (secondSpeciesUrl) {
       speciesUrl.push(secondSpeciesUrl);
     }
-    if (thirdSpeciesUrl !== "") {
+    if (thirdSpeciesUrl) {
       speciesUrl.push(thirdSpeciesUrl);
     }
 
@@ -74,9 +69,7 @@ const PokemonDetail = ({ iconType, elementBgColor }) => {
         tempTextArr.push(text);
       }
     });
-    // speciesData.names.map((names) => {
-    //   console.log(names.names);
-    // });
+
     let namesInDifferentLanguange = [];
     speciesData.forEach((data) => {
       namesInDifferentLanguange.push(data.names);

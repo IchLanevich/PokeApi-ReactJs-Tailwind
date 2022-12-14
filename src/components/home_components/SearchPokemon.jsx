@@ -1,14 +1,17 @@
 import axios from "axios";
 import { useMemo } from "react";
 import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { HomeContext } from "../../pages/Home";
+const SearchPokemon = () => {
+  const { setIsLoading, setPokemonData } = useContext(HomeContext);
 
-const SearchPokemon = ({ setPokemonData }) => {
   const [query, setQuery] = useState("");
   const [pokemonUrl, setPokemonUrl] = useState(
     "https://pokeapi.co/api/v2/pokemon?limit=10000"
   );
   const [allPokemonData, setAllPokemonData] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
 
   const fetchPokemonData = async () => {
     if (query) {
@@ -28,13 +31,7 @@ const SearchPokemon = ({ setPokemonData }) => {
     pokemon.name.includes(`${query}`)
   );
   const pokemonUrls = [];
-  // if (query) {
-  //   const pokemonObjUrls = filteredPokemon.forEach((pokemon) => {
-  //     pokemonUrls.push(pokemon.url);
-  //   });
-  // } else {
 
-  // }
   const pokemonObjUrls = filteredPokemon.forEach((pokemon) => {
     pokemonUrls.push(pokemon.url);
   });
